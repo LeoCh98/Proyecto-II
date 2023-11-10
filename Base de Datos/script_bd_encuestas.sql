@@ -19,7 +19,7 @@ USE `bd_encuestas` ;
 DROP TABLE IF EXISTS `bd_encuestas`.`encuesta` ;
 
 CREATE TABLE IF NOT EXISTS `bd_encuestas`.`encuesta` (
-  `id_encuesta` INT NOT NULL,
+  `id_encuesta` INT NOT NULL AUTO_INCREMENT,
   `fecha_creacion` TIMESTAMP NULL,
   `fecha_inicio` TIMESTAMP NULL,
   `fecha_final` TIMESTAMP NULL,
@@ -34,7 +34,7 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `bd_encuestas`.`pregunta` ;
 
 CREATE TABLE IF NOT EXISTS `bd_encuestas`.`pregunta` (
-	`id_pregunta` INT NOT NULL,
+	`id_pregunta` INT NOT NULL AUTO_INCREMENT,
     `id_encuesta_asignada` INT NULL,
     `categoria` VARCHAR(25) NULL,
     `enunciado` VARCHAR(125) NULL,
@@ -55,7 +55,7 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `bd_encuestas`.`respuesta` ;
 
 CREATE TABLE IF NOT EXISTS `bd_encuestas`.`respuesta` (
-	`id_respuesta` INT NOT NULL,
+	`id_respuesta` INT NOT NULL AUTO_INCREMENT,
     `id_pregunta_asignada` INT NULL,
     `la_respuesta` VARCHAR(200) NULL,
     PRIMARY KEY (`id_respuesta`),
