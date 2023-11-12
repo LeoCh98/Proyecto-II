@@ -1,8 +1,12 @@
+package com.progra.proyectoii.backend;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
-package com.progra.proyectoii.backend;
 
+
+import com.progra.proyectoii.backend.entidades.GestorEncuestas;
+import com.progra.proyectoii.backend.entidades.GestorPreguntas;
+import com.progra.proyectoii.backend.entidades.GestorRespuestas;
 import cr.ac.una.db.Database;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -31,5 +35,17 @@ public class ProyectoIIBackend {
         } catch (SQLException ex) {
             System.err.printf("Exception: '%s'%n", ex.getMessage());
         }
+        
+        GestorRespuestas respuestas = GestorRespuestas.obtenerInstancia();
+        System.out.println(respuestas);
+        System.out.println();
+        
+        GestorPreguntas preguntas = GestorPreguntas.obtenerInstancia();
+        System.out.println(preguntas);
+        System.out.println();
+        
+        GestorEncuestas encuestas = GestorEncuestas.obtenerInstancia();
+        System.out.println(encuestas);
+        System.out.println();
     }
 }
