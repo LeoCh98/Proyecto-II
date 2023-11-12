@@ -5,10 +5,18 @@
     <artifactId>ProyectoII-backend</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>cr.ac.una</groupId>
+            <artifactId>simpleDBLib_3.0.0</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+    </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <exec.mainClass>com.progra.proyectoii.backend.ProyectoIIBackend</exec.mainClass>
     </properties>
+    <name>ProyectoII-backend</name>
 </project>
