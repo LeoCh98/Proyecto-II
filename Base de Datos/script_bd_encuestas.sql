@@ -58,6 +58,7 @@ CREATE TABLE IF NOT EXISTS `bd_encuestas`.`respuesta` (
 	`id_respuesta` INT NOT NULL AUTO_INCREMENT,
     `id_pregunta_asignada` INT NULL,
     `la_respuesta` VARCHAR(200) NULL,
+    `correcto` BOOLEAN NULL,
     PRIMARY KEY (`id_respuesta`),
   INDEX `fk_encuestas_pregunta_idx` (`id_pregunta_asignada` ASC) VISIBLE,
   CONSTRAINT `fk_encuestas_pregunta`

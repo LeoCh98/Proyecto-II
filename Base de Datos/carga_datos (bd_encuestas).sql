@@ -21,18 +21,38 @@ INSERT INTO `bd_encuestas`.`pregunta`
 ;
 
 INSERT INTO `bd_encuestas`.`respuesta`
-	(`id_pregunta_asignada`, `la_respuesta`)
+	(`id_pregunta_asignada`, `la_respuesta`, `correcto`)
 	VALUES
-	(1, 'Homero'),
-	(2, 'Ares'),
-	(2, 'Marte'),
-	(2, 'Tyr'),
-	(5, '1939'),
-    (6, 'La Marsellesa'),
-    (7, 'Judas'),
-    (8, 'Zagred'),
-    (9, 'Spider-Man'),
-    (9, 'Cherry'),
-    (9, 'Lo Imposible'),
-    (10,'45')
+	(1, 'Homero', TRUE),
+    (1, 'Aquiles', FALSE),
+    (1, 'Aristoteles', FALSE),
+    (1, 'Miguelangelo', FALSE),
+	(2, 'Ares', TRUE),
+	(2, 'Marte', TRUE),
+	(2, 'Tyr', TRUE),
+    (2, 'Atreus', FALSE),
+	(5, '1939', TRUE),
+    (5, '1945', FALSE),
+    (5, '1911', FALSE),
+    (5, '1926', FALSE),
+    (6, 'La Marsellesa', TRUE),
+    (6, 'Dernière danse', FALSE),
+    (6, 'Francesca', FALSE),
+    (6, 'La Boxeuse Amoureuse', FALSE),
+    (7, 'Pedro', FALSE),
+    (7, 'Simón', FALSE),
+    (7, 'Judas', TRUE),
+    (7, 'Mateo', FALSE),
+    (8, 'Bern', FALSE),
+    (8, 'Bucarest', FALSE),
+    (8, 'Riga', FALSE),
+    (8, 'Zagred', TRUE),
+    (9, 'Spider-Man', TRUE),
+    (9, 'Exit', FALSE),
+    (9, 'Cherry', TRUE),
+    (9, 'Lo Imposible', TRUE),
+    (10, '49', FALSE),
+    (10,'45', TRUE),
+    (10, '40', FALSE),
+    (10, '63', FALSE)
 ;
