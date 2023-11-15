@@ -6,6 +6,8 @@ package com.progra.proyectoii.backend.entidades;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+import jakarta.xml.bind.annotation.XmlType;
+import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,8 +31,9 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@XmlType
 @DatabaseTable(tableName = "pregunta")
-public class Pregunta {
+public class Pregunta implements Serializable {
     
     @Getter
     @Setter

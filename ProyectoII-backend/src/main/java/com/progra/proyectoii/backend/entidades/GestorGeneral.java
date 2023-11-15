@@ -32,9 +32,10 @@ import javax.sql.DataSource;
  * 
  * -----------------------------------------------------------------
  */
-@XmlRootElement(name = "lista_encuestas")
-public class GestorEncuestas implements Serializable {
-    public GestorEncuestas() {
+@XmlRootElement(name = "lista")
+public class GestorGeneral implements Serializable {
+    
+    public GestorGeneral() {
         try {
             InitialContext ctx = new InitialContext();
             bd = (DataSource) ctx.lookup("jdbc/bd_grupos");
@@ -67,50 +68,70 @@ public class GestorEncuestas implements Serializable {
             DataSourceConnectionSource connectionSource
                     = new DataSourceConnectionSource(bd, url);
             encuestaDAO = DaoManager.createDao(connectionSource, Encuesta.class);
+            preguntaDAO = DaoManager.createDao(connectionSource, Pregunta.class);
+            respuestaDAO = DaoManager.createDao(connectionSource, Respuesta.class);
         } catch (SQLException ex) {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }
     }
     
-    public static GestorEncuestas obtenerInstancia() {
+    public static GestorGeneral obtenerInstancia() {
         if (instancia == null) {
-            instancia = new GestorEncuestas();
+            instancia = new GestorGeneral();
         }
         return instancia;
     }
     
     public boolean encontrarId(String id) throws SQLException {
-        if(encuestaDAO.queryForId(id)!=null){
+        if(respuestaDAO.queryForId(id)!=null){
             return true;
         } else{
             return false;
         }
     }
     
-    public int agregar(Encuesta nuevo) throws SQLException {
-        return encuestaDAO.create(nuevo);
+    public int agregar(Respuesta nuevo) throws SQLException {
+        return respuestaDAO.create(nuevo);
     }
 
-    public Encuesta recuperar(String id) throws SQLException {
+    public Encuesta recuperarE(String id) throws SQLException {
         return encuestaDAO.queryForId(id);
     }
+    
+    public Pregunta recuperarP(String id) throws SQLException {
+        return preguntaDAO.queryForId(id);
+    }
+    
+    public Respuesta recuperarR(String id) throws SQLException {
+        return respuestaDAO.queryForId(id);
+    }
 
-    public int actualizar(Encuesta encuesta) throws SQLException {
-        return encuestaDAO.update(encuesta);
+    public int actualizarR(Respuesta respuesta) throws SQLException {
+        return respuestaDAO.update(respuesta);
     }
 
     public int eliminar(String id) throws SQLException {
-        return encuestaDAO.deleteById(id);
+        return respuestaDAO.deleteById(id);
     }
 
-    public List<Encuesta> listarTodos() throws SQLException {
+    public List<Encuesta> listarTodosE() throws SQLException {
         return encuestaDAO.queryForAll();
+    }
+    public List<Pregunta> listarTodosP() throws SQLException {
+        return preguntaDAO.queryForAll();
+    }
+    public List<Respuesta> listarTodosR() throws SQLException {
+        return respuestaDAO.queryForAll();
     }
 
     public void actualizar() {
         encuestas.clear();
+        preguntas.clear();
+        respuestas.clear();
         try {
-            encuestas.addAll(listarTodos());
+            encuestas.addAll(listarTodosE());
+            preguntas.addAll(listarTodosP());
+            respuestas.addAll(listarTodosR());
         } catch (SQLException ex) {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }
@@ -123,16 +144,32 @@ public class GestorEncuestas implements Serializable {
         for (Encuesta e : encuestas) {
             r.append(String.format("\n\t%s,", e));
         }
+        for (Pregunta e : preguntas) {
+            r.append(String.format("\n\t%s,", e));
+        }
+        for (Respuesta e : respuestas) {
+            r.append(String.format("\n\t%s,", e));
+        }
         r.append("\n}");
         return r.toString();
     }
     
-    private static GestorEncuestas instancia = null;
+    private static GestorGeneral instancia = null;
 
     private DataSource bd = null;
+    private Dao<Respuesta, String> respuestaDAO;
+    private Dao<Pregunta, String> preguntaDAO;
     private Dao<Encuesta, String> encuestaDAO;
 
     @XmlElementWrapper(name = "encuestas")
     @XmlElement(name = "encuesta")
     private List<Encuesta> encuestas = new ArrayList<>();
+    
+    @XmlElementWrapper(name = "preguntas")
+    @XmlElement(name = "pregunta")
+    private List<Pregunta> preguntas = new ArrayList<>();
+    
+    @XmlElementWrapper(name = "respuestas")
+    @XmlElement(name = "respuesta")
+    private List<Respuesta> respuestas = new ArrayList<>();
 }

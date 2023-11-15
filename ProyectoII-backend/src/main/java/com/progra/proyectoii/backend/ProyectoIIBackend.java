@@ -5,6 +5,7 @@ package com.progra.proyectoii.backend;
 
 
 import com.progra.proyectoii.backend.entidades.GestorEncuestas;
+import com.progra.proyectoii.backend.entidades.GestorGeneral;
 import com.progra.proyectoii.backend.entidades.GestorPreguntas;
 import com.progra.proyectoii.backend.entidades.GestorRespuestas;
 import cr.ac.una.db.Database;
@@ -21,31 +22,34 @@ import java.sql.SQLException;
 public class ProyectoIIBackend {
 
     public static void main(String[] args) {
-        try {
-            Database db = Database.createMySQLDatabase("db.properties");
-            System.out.println(db);
-
-            System.out.println("Connecting..");
-            try (Connection cnx = db.getConnection()) {
-                System.out.println(cnx);
-                System.out.println("Successful connection..");
-            }
-            System.out.println("Connection closed.");
-
-        } catch (SQLException ex) {
-            System.err.printf("Exception: '%s'%n", ex.getMessage());
-        }
         
-        GestorRespuestas respuestas = GestorRespuestas.obtenerInstancia();
-        System.out.println(respuestas);
-        System.out.println();
-        
-        GestorPreguntas preguntas = GestorPreguntas.obtenerInstancia();
-        System.out.println(preguntas);
-        System.out.println();
-        
-        GestorEncuestas encuestas = GestorEncuestas.obtenerInstancia();
-        System.out.println(encuestas);
-        System.out.println();
+        GestorGeneral registro = GestorGeneral.obtenerInstancia();
+        System.out.println(registro);
+//        try {
+//            Database db = Database.createMySQLDatabase("db.properties");
+//            System.out.println(db);
+//
+//            System.out.println("Connecting..");
+//            try (Connection cnx = db.getConnection()) {
+//                System.out.println(cnx);
+//                System.out.println("Successful connection..");
+//            }
+//            System.out.println("Connection closed.");
+//
+//        } catch (SQLException ex) {
+//            System.err.printf("Exception: '%s'%n", ex.getMessage());
+//        }
+//        
+//        GestorRespuestas respuestas = GestorRespuestas.obtenerInstancia();
+//        System.out.println(respuestas);
+//        System.out.println();
+//        
+//        GestorPreguntas preguntas = GestorPreguntas.obtenerInstancia();
+//        System.out.println(preguntas);
+//        System.out.println();
+//        
+//        GestorEncuestas encuestas = GestorEncuestas.obtenerInstancia();
+//        System.out.println(encuestas);
+//        System.out.println();
     }
 }

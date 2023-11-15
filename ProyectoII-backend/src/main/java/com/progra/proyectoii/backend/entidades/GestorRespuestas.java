@@ -10,6 +10,8 @@ import com.j256.ormlite.jdbc.DataSourceConnectionSource;
 import com.mysql.cj.jdbc.MysqlDataSource;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElementWrapper;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,8 +32,8 @@ import javax.sql.DataSource;
  * 
  * -----------------------------------------------------------------
  */
-
-public class GestorRespuestas {
+@XmlRootElement(name = "lista_respuestas")
+public class GestorRespuestas implements Serializable {
     
     public GestorRespuestas() {
         try {
