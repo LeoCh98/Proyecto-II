@@ -6,17 +6,27 @@
 
 var backend = "http://localhost:8080/ProyectoII-backend/api";
 
-var globalstate = {user:null};
+var globalstate = {user: null};
 
 var app;
 
-function loaded(){
+function loaded() {
     app = new App();
     document.querySelector('#root').replaceChildren(app.dom);
 }
 
 document.addEventListener("DOMContentLoaded", loaded);
 
-function errorMessage(code){
+function errorMessage(code) {
     alert(`Error. Status: ${code}`);
+}
+
+function loadAnswers() {
+    fetch(`${backend}/respuestas`, {
+        method: 'GET'
+    })
+            .then(r => {
+                console.log(r);
+                return r.json();
+            })
 }
