@@ -1,22 +1,31 @@
 package com.mycompany.proyectoii.backend;
 
 import com.mycompany.proyectoii.backend.resources.*;
-import jakarta.annotation.security.DeclareRoles;
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Configures Jakarta RESTful Web Services for the application.
- * @author Juneau
+/*
+ * -----------------------------------------------------------------
+ *
+ * (c) 2023
+ * 
+ * @author Jean Paul Castillo Vives
+ * @author Jorge Andrés Durán Campos
+ * @author Leonardo Jesús Chaves Hernández
+ * 
+ * @version 1.0.0 2023-11-15
+ * 
+ * -----------------------------------------------------------------
  */
+
 @ApplicationPath("api")
-//@DeclareRoles({"true", "false"})
 public class JakartaRestConfiguration extends Application {
     @Override
     public Set<Class<?>> getClasses() {
         HashSet<Class<?>> classes = new HashSet<>();
+        classes.add(Respuestas.class);
         /*
         classes.add(Policies.class);
         classes.add(Categories.class);
