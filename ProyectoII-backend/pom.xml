@@ -13,13 +13,13 @@
     </properties>
     
     <dependencies>
-        
+        <!--
         <dependency>
             <groupId>cr.ac.una</groupId>
             <artifactId>simpleDBLib_3.0.0</artifactId>
             <version>3.0.0</version>
         </dependency>
-        
+        -->
         <!-- https://mvnrepository.com/artifact/com.j256.ormlite/ormlite-jdbc -->
         <dependency>
             <groupId>com.j256.ormlite</groupId>
