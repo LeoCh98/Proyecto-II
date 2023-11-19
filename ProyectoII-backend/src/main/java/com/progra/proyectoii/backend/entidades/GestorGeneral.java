@@ -50,7 +50,7 @@ public class GestorGeneral implements Serializable {
             mds.setPortNumber(3306);
             mds.setDatabaseName("bd_encuestas");
             mds.setUser("root");
-            mds.setPassword("root");
+            mds.setPassword("rootroot");
 
             System.out.println("Usando el manejador JDBC para acceder a la base de datos..");
         }

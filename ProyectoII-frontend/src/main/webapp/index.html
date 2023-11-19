@@ -1,10 +1,67 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Start Page</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuesta</title>
+    <link href="css/Styles.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+    <div class="survey-container">
+        <form action="procesar_encuesta.php" method="post">
+            
+            <!-- Pregunta de selección múltiple -->
+            <div class="question">
+                <p>¿Quién escribió La Odisea?</p>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="pregunta1" value="opcion1"> Homero
+                    </label>
+                    <label>
+                        <input type="radio" name="pregunta1" value="opcion2"> Aquiles
+                    </label>
+                    <label>
+                        <input type="radio" name="pregunta1" value="opcion3"> Aristoteles
+                    </label>
+                    <label>
+                        <input type="radio" name="pregunta1" value="opcion3"> Miguelangelo
+                    </label>
+                </div>
+            </div>
+
+            <!-- Pregunta de valoración cualitativa -->
+            <div class="question">
+                <p>¿Qué tan de acuerdo esta con la presidensia de Biden?</p>
+                <div class="rating">
+                    <label>
+                        <input type="radio" name="pregunta2" value="1"> Completamente en desacuerdo
+                    </label>
+                    <label>
+                        <input type="radio" name="pregunta2" value="2"> Parcialmente en desacuerdo
+                    </label>
+                    <label>
+                        <input type="radio" name="pregunta2" value="3"> Ni de acuerdo ni en desacuerdo
+                    </label>
+                    <label>
+                        <input type="radio" name="pregunta2" value="4"> Parcialmente de acuerdo
+                    </label>
+                    <label>
+                        <input type="radio" name="pregunta2" value="5"> Completamente de acuerdo
+                    </label>
+                </div>
+            </div>
+
+            <!-- Pregunta de respuesta abierta -->
+            <div class="question">
+                <p>¿Qué opina sobre la realidad económica del país?</p>
+                <textarea name="pregunta3" rows="4" placeholder="Ingrese su respuesta aquí"></textarea>
+            </div>
+
+            <input type="submit" value="Enviar encuesta">
+
+        </form>
+    </div>
+
+</body>
 </html>
