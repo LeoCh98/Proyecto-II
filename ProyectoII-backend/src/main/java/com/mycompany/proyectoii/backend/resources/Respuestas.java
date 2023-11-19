@@ -40,11 +40,11 @@ public class Respuestas {
     }
     
     @GET
-    @Path("/{PreguntaID}")
+    @Path("/{preguntaID}")
     @Produces({MediaType.APPLICATION_JSON})
-    public ArrayList<Respuesta> findByPregunta (@PathParam("PreguntaID") Integer id) throws Exception {
+    public ArrayList<Respuesta> findByPregunta (@PathParam("preguntaID") Integer preguntaID) throws Exception {
         try {
-            return Service.instance().selectRespuestas(id);
+            return Service.instance().selectRespuestas(preguntaID);
         } catch (Exception ex) {
             throw new NotFoundException();
         }

@@ -57,7 +57,7 @@ public class RespuestaDao {
         ArrayList<Respuesta> result = new ArrayList<>();
         String sql = "select " +
                 "* " +
-                "from respuesta r" +
+                "from respuesta r " +
                 "where id_pregunta_asignada = ?";
         PreparedStatement stm = db.prepareStatement(sql);
         stm.setInt(1, id);
