@@ -22,19 +22,22 @@ public class Encuesta implements Serializable {
     private Date fechaCreacion;
     private Date fechaInicio;
     private Date fechaFinal;
+    private List<Pregunta> preguntas;
     
     public Encuesta() {
         this.id = 0;
         this.fechaCreacion = new Date();
         this.fechaInicio = new Date();
         this.fechaFinal = new Date();
+        this.preguntas = new ArrayList();
     }
 
-    public Encuesta(int id, Date fechaCreacion, Date fechaInicio, Date fechaFinal) {
+    public Encuesta(int id, Date fechaCreacion, Date fechaInicio, Date fechaFinal, List<Pregunta> preguntas) {
         this.id = id;
         this.fechaCreacion = fechaCreacion;
         this.fechaInicio = fechaInicio;
         this.fechaFinal = fechaFinal;
+        this.preguntas = preguntas;
     }
 
     public int getId() {
@@ -69,8 +72,16 @@ public class Encuesta implements Serializable {
         this.fechaFinal = fechaFinal;
     }
 
+    public List<Pregunta> getPreguntas() {
+        return preguntas;
+    }
+
+    public void setPreguntas(List<Pregunta> preguntas) {
+        this.preguntas = preguntas;
+    }
+
     @Override
     public String toString() {
-        return "Encuesta{" + "id=" + id + ", fechaCreacion=" + fechaCreacion + ", fechaInicio=" + fechaInicio + ", fechaFinal=" + fechaFinal + '}';
+        return "Encuesta{" + "id=" + id + ", fechaCreacion=" + fechaCreacion + ", fechaInicio=" + fechaInicio + ", fechaFinal=" + fechaFinal + ", preguntas=" + preguntas + '}';
     }
 }

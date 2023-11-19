@@ -1,7 +1,6 @@
 package com.mycompany.proyectoii.backend.logic;
 
 import java.io.Serializable;
-import java.util.*;
 
 /*
  * -----------------------------------------------------------------
