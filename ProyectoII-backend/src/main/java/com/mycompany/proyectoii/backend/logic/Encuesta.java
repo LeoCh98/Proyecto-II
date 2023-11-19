@@ -1,3 +1,8 @@
+package com.mycompany.proyectoii.backend.logic;
+
+import java.io.Serializable;
+import java.util.*;
+
 /*
  * -----------------------------------------------------------------
  *
@@ -12,40 +17,60 @@
  * -----------------------------------------------------------------
  */
 
-package com.mycompany.proyectoii.backend.logic;
-
-import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.table.DatabaseTable;
-import jakarta.xml.bind.annotation.XmlType;
-import java.io.Serializable;
-import java.util.Date;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
-@XmlType
-@DatabaseTable(tableName = "encuesta")
 public class Encuesta implements Serializable {
-    
-    @Getter
-    @Setter
-    @DatabaseField(columnName = "id_encuesta", id = true)
     private int id;
-    @Getter
-    @Setter
-    @DatabaseField(columnName = "fecha_creacion")
     private Date fechaCreacion;
-    @Getter
-    @Setter
-    @DatabaseField(columnName = "fecha_inicio")
     private Date fechaInicio;
-    @Getter
-    @Setter
-    @DatabaseField(columnName = "fecha_final")
     private Date fechaFinal;
+    
+    public Encuesta() {
+        this.id = 0;
+        this.fechaCreacion = new Date();
+        this.fechaInicio = new Date();
+        this.fechaFinal = new Date();
+    }
+
+    public Encuesta(int id, Date fechaCreacion, Date fechaInicio, Date fechaFinal) {
+        this.id = id;
+        this.fechaCreacion = fechaCreacion;
+        this.fechaInicio = fechaInicio;
+        this.fechaFinal = fechaFinal;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public Date getFechaFinal() {
+        return fechaFinal;
+    }
+
+    public void setFechaFinal(Date fechaFinal) {
+        this.fechaFinal = fechaFinal;
+    }
+
+    @Override
+    public String toString() {
+        return "Encuesta{" + "id=" + id + ", fechaCreacion=" + fechaCreacion + ", fechaInicio=" + fechaInicio + ", fechaFinal=" + fechaFinal + '}';
+    }
 }

@@ -1,3 +1,7 @@
+package com.mycompany.proyectoii.backend.logic;
+
+import java.io.Serializable;
+
 /*
  * -----------------------------------------------------------------
  *
@@ -12,39 +16,60 @@
  * -----------------------------------------------------------------
  */
 
-package com.mycompany.proyectoii.backend.logic;
-
-import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.table.DatabaseTable;
-import jakarta.xml.bind.annotation.XmlType;
-import java.io.Serializable;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
-@XmlType
-@DatabaseTable(tableName = "pregunta")
 public class Pregunta implements Serializable {
-    
-    @Getter
-    @Setter
-    @DatabaseField(columnName = "id_pregunta", id = true)
     private int id;
-    @Getter
-    @Setter
-    @DatabaseField(columnName = "id_encuesta_asignada")
     private int idEncuesta;
-    @Getter
-    @Setter
-    @DatabaseField(columnName = "categoria")
     private String categoria;
-    @Getter
-    @Setter
-    @DatabaseField(columnName = "enunciado")
     private String enunciado;
+
+    public Pregunta() {
+        this.id = 0;
+        this.idEncuesta = 0;
+        this.categoria = "";
+        this.enunciado = "";
+    }
+
+    public Pregunta(int id, int idEncuesta, String categoria, String enunciado) {
+        this.id = id;
+        this.idEncuesta = idEncuesta;
+        this.categoria = categoria;
+        this.enunciado = enunciado;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getIdEncuesta() {
+        return idEncuesta;
+    }
+
+    public void setIdEncuesta(int idEncuesta) {
+        this.idEncuesta = idEncuesta;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public String getEnunciado() {
+        return enunciado;
+    }
+
+    public void setEnunciado(String enunciado) {
+        this.enunciado = enunciado;
+    }
+
+    @Override
+    public String toString() {
+        return "Pregunta{" + "id=" + id + ", idEncuesta=" + idEncuesta + ", categoria=" + categoria + ", enunciado=" + enunciado + '}';
+    }
 }

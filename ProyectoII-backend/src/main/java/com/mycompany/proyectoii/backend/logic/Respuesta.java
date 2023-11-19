@@ -1,3 +1,8 @@
+package com.mycompany.proyectoii.backend.logic;
+
+import java.io.Serializable;
+import java.util.*;
+
 /*
  * -----------------------------------------------------------------
  *
@@ -12,39 +17,60 @@
  * -----------------------------------------------------------------
  */
 
-package com.mycompany.proyectoii.backend.logic;
-
-import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.table.DatabaseTable;
-import jakarta.xml.bind.annotation.XmlType;
-import java.io.Serializable;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
-@XmlType
-@DatabaseTable(tableName = "respuesta")
 public class Respuesta implements Serializable {
-    
-    @Getter
-    @Setter
-    @DatabaseField(columnName = "id_respuesta", id = true)
     private int id;
-    @Getter
-    @Setter
-    @DatabaseField(columnName = "id_pregunta_asignada")
     private int idPregunta;
-    @Getter
-    @Setter
-    @DatabaseField(columnName = "la_respuesta")
     private String laRespuesta;
-    @Getter
-    @Setter
-    @DatabaseField(columnName = "correcto")
     private boolean correcto;
+
+    public Respuesta() {
+        this.id = 0;
+        this.idPregunta = 0;
+        this.laRespuesta = "";
+        this.correcto = false;
+    }
+    
+    public Respuesta(int id, int idPregunta, String laRespuesta, boolean correcto) {
+        this.id = id;
+        this.idPregunta = idPregunta;
+        this.laRespuesta = laRespuesta;
+        this.correcto = correcto;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getIdPregunta() {
+        return idPregunta;
+    }
+
+    public void setIdPregunta(int idPregunta) {
+        this.idPregunta = idPregunta;
+    }
+
+    public String getLaRespuesta() {
+        return laRespuesta;
+    }
+
+    public void setLaRespuesta(String laRespuesta) {
+        this.laRespuesta = laRespuesta;
+    }
+
+    public boolean isCorrecto() {
+        return correcto;
+    }
+
+    public void setCorrecto(boolean correcto) {
+        this.correcto = correcto;
+    }
+
+    @Override
+    public String toString() {
+        return "Respuesta{" + "id=" + id + ", idPregunta=" + idPregunta + ", laRespuesta=" + laRespuesta + ", correcto=" + correcto + '}';
+    }
 }
