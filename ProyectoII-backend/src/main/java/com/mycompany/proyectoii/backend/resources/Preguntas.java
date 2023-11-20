@@ -38,4 +38,15 @@ public class Preguntas {
     public ArrayList<Pregunta> find() throws Exception {
         return Service.instance().selectAllPreguntas();
     }
+    
+    @GET
+    @Path("/{id}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public ArrayList<Pregunta> findBySurvey(@PathParam("id") Integer id) throws Exception {
+        try {
+            return Service.instance().selectPreguntas(id);
+        } catch (Exception ex) {
+            throw new NotFoundException();
+        }
+    }
 }

@@ -52,4 +52,8 @@ public class Service {
     public ArrayList<Pregunta> selectAllPreguntas() throws Exception {
         return preguntaDao.findAll();
     }
+    
+    public ArrayList<Pregunta> selectPreguntas(Integer id) throws Exception {
+        return preguntaDao.findBySurvey(id);
+    }
 }

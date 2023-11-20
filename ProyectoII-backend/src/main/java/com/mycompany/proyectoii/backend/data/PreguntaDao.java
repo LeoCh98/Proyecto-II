@@ -56,4 +56,23 @@ public class PreguntaDao {
         }
         return result;
     }
+    
+    public ArrayList<Pregunta> findBySurvey(Integer id) throws Exception {
+        ArrayList<Pregunta> result = new ArrayList<>();
+        String sql = "select " +
+                "* " +
+                "from pregunta p " +
+                "where id_encuesta_asignada = ?";
+        PreparedStatement stm = db.prepareStatement(sql);
+        stm.setInt(1, id);
+        ResultSet rs = db.executeQuery(stm);
+        RespuestaDao respuestaDao = new RespuestaDao(db);
+        Pregunta p;
+        while(rs.next()) {
+            p = from(rs, "p");
+            p.setRespuestas(respuestaDao.findByQuestion(p.getId()));
+            result.add(p);
+        }
+        return result;
+    }
 }
