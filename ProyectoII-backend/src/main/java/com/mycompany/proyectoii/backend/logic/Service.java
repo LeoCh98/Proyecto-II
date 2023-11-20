@@ -34,11 +34,13 @@ public class Service {
     RelDatabase relDatabase;
     RespuestaDao respuestaDao;
     PreguntaDao preguntaDao;
+    EncuestaDao encuestaDao;
     
     private Service() {
         relDatabase = new RelDatabase();
         respuestaDao = new RespuestaDao(relDatabase);
         preguntaDao = new PreguntaDao(relDatabase);
+        encuestaDao = new EncuestaDao(relDatabase);
     }
     
     public ArrayList<Respuesta> selectAllRespuestas() throws Exception {
@@ -55,5 +57,13 @@ public class Service {
     
     public ArrayList<Pregunta> selectPreguntas(Integer id) throws Exception {
         return preguntaDao.findBySurvey(id);
+    }
+    
+    public ArrayList<Encuesta> selectAllEncuestas() throws Exception {
+        return encuestaDao.findAll();
+    }
+    
+    public ArrayList<Encuesta> selectEncuestas(Integer id) throws Exception {
+        return encuestaDao.findById(id);
     }
 }

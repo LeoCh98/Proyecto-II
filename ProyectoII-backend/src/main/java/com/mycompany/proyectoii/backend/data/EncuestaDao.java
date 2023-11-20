@@ -27,29 +27,52 @@ public class EncuestaDao {
         this.db = db;
     }
     
-    public ArrayList<Encuesta> selectAll() throws Exception {
+    public Encuesta from(ResultSet rs, String alias) {
+        try {
+            Encuesta e = new Encuesta();
+            e.setId(rs.getInt(alias + ".id_encuesta"));
+            e.setFechaCreacion(rs.getDate(alias + ".fecha_creacion"));
+            e.setFechaInicio(rs.getDate(alias + ".fecha_inicio"));
+            e.setFechaFinal(rs.getDate(alias + ".fecha_final"));
+            return e;
+        } catch (SQLException ex) {
+            return null;
+        }
+    }
+    
+    public ArrayList<Encuesta> findAll() throws Exception {
         ArrayList<Encuesta> result = new ArrayList<>();
         String sql = "select " +
                 "* " +
                 "from encuesta e";
         PreparedStatement stm = db.prepareStatement(sql);
         ResultSet rs = db.executeQuery(stm);
+        PreguntaDao preguntaDao = new PreguntaDao(db);
+        Encuesta e;
         while(rs.next()) {
-            result.add(from(rs, "e"));
+            e = from(rs, "e");
+            e.setPreguntas(preguntaDao.findBySurvey(e.getId()));
+            result.add(e);
         }
         return result;
     }
     
-    public Encuesta from(ResultSet rs, String alias) {
-        try {
-            Encuesta e = new Encuesta();
-            e.setId(rs.getInt(alias + "id_encuesta"));
-            e.setFechaCreacion(rs.getDate(alias + "fecha_creacion"));
-            e.setFechaInicio(rs.getDate(alias + "fecha_inicio"));
-            e.setFechaFinal(rs.getDate(alias + "fecha_final"));
-            return e;
-        } catch (SQLException ex) {
-            return null;
+    public ArrayList<Encuesta> findById(Integer id) throws Exception {
+        ArrayList<Encuesta> result = new ArrayList<>();
+        String sql = "select " +
+                "* " +
+                "from encuesta e " +
+                "where id_encuesta=?";
+        PreparedStatement stm = db.prepareStatement(sql);
+        stm.setInt(1, id);
+        ResultSet rs = db.executeQuery(stm);
+        PreguntaDao preguntaDao = new PreguntaDao(db);
+        Encuesta e;
+        while(rs.next()) {
+            e = from(rs, "e");
+            e.setPreguntas(preguntaDao.findBySurvey(e.getId()));
+            result.add(e);
         }
+        return result;
     }
 }
