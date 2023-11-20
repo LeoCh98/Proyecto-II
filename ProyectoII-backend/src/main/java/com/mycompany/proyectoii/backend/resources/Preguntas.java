@@ -29,24 +29,13 @@ import jakarta.ws.rs.QueryParam;
  * -----------------------------------------------------------------
  */
 
-@Path("/respuestas")
+@Path("/preguntas")
 @PermitAll
-public class Respuestas {
+public class Preguntas {
     
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public ArrayList<Respuesta> find() throws Exception {
-        return Service.instance().selectAllRespuestas();
-    }
-    
-    @GET
-    @Path("/{preguntaID}")
-    @Produces({MediaType.APPLICATION_JSON})
-    public ArrayList<Respuesta> findByPregunta(@PathParam("preguntaID") Integer preguntaID) throws Exception {
-        try {
-            return Service.instance().selectRespuestas(preguntaID);
-        } catch (Exception ex) {
-            throw new NotFoundException();
-        }
+    public ArrayList<Pregunta> find() throws Exception {
+        return Service.instance().selectAllPreguntas();
     }
 }

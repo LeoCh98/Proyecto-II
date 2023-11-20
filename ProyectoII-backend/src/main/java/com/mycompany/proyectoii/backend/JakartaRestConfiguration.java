@@ -26,6 +26,7 @@ public class JakartaRestConfiguration extends Application {
     public Set<Class<?>> getClasses() {
         HashSet<Class<?>> classes = new HashSet<>();
         classes.add(Respuestas.class);
+        classes.add(Preguntas.class);
         /*
         classes.add(Policies.class);
         classes.add(Categories.class);
