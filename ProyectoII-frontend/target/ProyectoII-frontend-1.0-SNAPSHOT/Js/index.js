@@ -1,8 +1,16 @@
-/* 
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/javascript.js to edit this template
+/*
+ * -----------------------------------------------------------------
+ *
+ * (c) 2023
+ * 
+ * @author Jean Paul Castillo Vives
+ * @author Jorge Andrés Durán Campos
+ * @author Leonardo Jesús Chaves Hernández
+ * 
+ * @version 1.0.0 2023-11-15
+ * 
+ * -----------------------------------------------------------------
  */
-
 
 var backend = "http://localhost:8080/ProyectoII-backend/api";
 
@@ -19,14 +27,4 @@ document.addEventListener("DOMContentLoaded", loaded);
 
 function errorMessage(code) {
     alert(`Error. Status: ${code}`);
-}
-
-function loadAnswers() {
-    fetch(`${backend}/respuestas`, {
-        method: 'GET'
-    })
-            .then(r => {
-                console.log(r);
-                return r.json();
-            })
 }
