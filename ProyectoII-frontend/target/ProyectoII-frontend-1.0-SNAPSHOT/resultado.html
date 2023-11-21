@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados de la Encuesta</title>
+    <!-- Agrega enlaces a Bootstrap y otros estilos que puedas necesitar -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="container mt-5">
+    <h1 class="mb-4">Resultados de la Encuesta</h1>
+
+    <div id="results-container">
+        <!-- Aquí se mostrarán los resultados -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Función para obtener los parámetros de la URL
+            function getQueryStringParams() {
+                const queryString = window.location.search.slice(1);
+                const params = new URLSearchParams(queryString);
+                return params;
+            }
+
+            // Función para mostrar los resultados
+            function displayResults() {
+                const resultsContainer = document.getElementById('results-container');
+                resultsContainer.innerHTML = '';
+
+                // Obtener los parámetros de la URL
+                const params = getQueryStringParams();
+
+                // Mostrar cada respuesta con el nombre de la pregunta y la respuesta
+                params.forEach((value, key) => {
+                    const resultItem = document.createElement('p');
+                    resultItem.textContent = `${key}: ${getQuestionName(key)} - ${getAnswerName(key, value)}`;
+                    resultsContainer.appendChild(resultItem);
+                });
+            }
+
+            // Función para obtener el nombre de la pregunta
+            function getQuestionName(questionKey) {
+                // Agrega lógica para mapear la clave de la pregunta al nombre real
+                // Por ejemplo: return questionNames[questionKey];
+                return questionKey;
+            }
+
+            // Función para obtener el nombre de la respuesta
+            function getAnswerName(questionKey, answerValue) {
+                // Agrega lógica para mapear la clave de la pregunta y el valor de la respuesta al nombre real
+                // Por ejemplo: return answerNames[questionKey][answerValue];
+                return answerValue;
+            }
+
+            // Mostrar los resultados al cargar la página
+            displayResults();
+        });
+    </script>
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+

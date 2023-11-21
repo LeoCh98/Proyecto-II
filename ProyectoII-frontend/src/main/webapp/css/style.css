@@ -1,12 +1,22 @@
-html, body {
-            height: 100%;
-        }
+.rating-container {
+    display: flex;
+    align-items: center;
+}
 
-        body {
-            display: flex;
-            flex-direction: column;
-        }
+.star-container {
+    margin-right: 8px;
+}
 
-        main {
-            flex: 1;
-        }
+.star-input {
+    display: none;
+}
+
+.star-label {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.star-input:checked + .star-label:before {
+    content: '\2605'; /* Código Unicode de la estrella rellena */
+    color: gold;
+}
